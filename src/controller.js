@@ -16,6 +16,20 @@ class LibroController{
         const [result] = await pool.query(`INSERT INTO libros(nombre, autor, categoria,anio_publicacion,isbn) VALUES (?,?,?,?,?)` , [libro.nombre, libro.autor, libro.categoria, libro.anio_publicacion, libro.isbn]);
         res.json({"Id insertado": result.insertId});
 }
+
+async delete(req, res){
+    const libro =  req.body;
+    const [result] = await pool.query(`DELETE FROM libros WHERE  id=(?)`, [libro.id]);
+    res.json({"Libro eliminado": result.affectedRows});
+
+}
+
+async update(req, res){
+    const libro =  req.body;
+    const [result] = await pool.query(`UPDATE libros SET nombre=(?), autor=(?), categoria=(?), anio_publicacion=(?),isbn=(?) WHERE id=(?)`, [libro.nombre, libro.autor, libro.categoria, libro.anio_publicacion, libro.isbn, libro.id]);
+    res.json({"Registros actualizados": result.changedRows});
+}
+
 }
 //con async (anteriormente al nombre del metodo) y await (en la consulta a la bd que no queremos en stand by) nuestro servidor puede recibir varias consultas 
 

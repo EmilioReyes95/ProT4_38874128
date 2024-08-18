@@ -7,3 +7,5 @@ export const router = Router(); //donde se cargan las rutas
 
 router.get('/libros', libro.getAll); //cuando cliente entra a servidor "libros" tiene acceso a todos los elementos gracia a metodo "getAll"
 router.post('/libros', libro.add);//para agregar libro 
+router.delete('/libros', libro.delete);//para eliminar libro
+router.put('/libros', libro.update);// para actualizar 
