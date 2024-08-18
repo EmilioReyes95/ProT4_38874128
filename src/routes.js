@@ -9,3 +9,4 @@ router.get('/libros', libro.getAll); //cuando cliente entra a servidor "libros" 
 router.post('/libros', libro.add);//para agregar libro 
 router.delete('/libros', libro.delete);//para eliminar libro
 router.put('/libros', libro.update);// para actualizar 
+router.get('/libros/:id', libro.getById); //para obtener un libro por su id
