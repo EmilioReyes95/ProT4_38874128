@@ -54,26 +54,6 @@ async delete(req, res) {
 
 }
 
-/*async update(req, res) {
-    try {
-        const { id, nombre, autor, categoria, anio_publicacion, isbn } = req.body;
-
-        // Verifica si el libro existe antes de intentar actualizarlo
-        const [existingBook] = await pool.query('SELECT * FROM libros WHERE id = ?', [id]);
-        if (existingBook.length === 0) {
-            return res.status(404).json({ message: 'Libro no encontrado' });
-        }
-
-        // Actualiza el libro si se encuentra
-        const [result] = await pool.query(
-            `UPDATE libros SET nombre = ?, autor = ?, categoria = ?, anio_publicacion = ?, isbn = ? WHERE id = ?`,
-            [nombre, autor, categoria, anio_publicacion, isbn, id]
-        );
-        res.json({ "Registros actualizados": result.changedRows });
-    } catch (error) {
-        res.status(500).json({ message: 'Error al actualizar el libro', error });
-    }
-}*/
 
 
 async update(req, res){
