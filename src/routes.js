@@ -5,4 +5,5 @@ import { libro } from './controller.js'; //importamos el objeto que creamos
 
 export const router = Router(); //donde se cargan las rutas
 
-router.get('/libros', libro.getAll); //cuando usuario entra a servidor "libros" tiene acceso a todos los elementos gracia a metodo "getAll"
+router.get('/libros', libro.getAll); //cuando cliente entra a servidor "libros" tiene acceso a todos los elementos gracia a metodo "getAll"
+router.post('/libros', libro.add);//para agregar libro 

@@ -5,11 +5,17 @@ import {pool} from './database.js';
 //se crea clase librocontroller con funcionalidades CRUD para traer lo que tengamos en BD
 
 class LibroController{
+
     async getAll(req, res) {
         const [result] = await pool.query('SELECT * FROM libros');
         res.json(result);
     }
 
+    async add(req, res){
+        const libro =  req.body;
+        const [result] = await pool.query(`INSERT INTO libros(nombre, autor, categoria,anio_publicacion,isbn) VALUES (?,?,?,?,?)` , [libro.nombre, libro.autor, libro.categoria, libro.anio_publicacion, libro.isbn]);
+        res.json({"Id insertado": result.insertId});
+}
 }
 //con async (anteriormente al nombre del metodo) y await (en la consulta a la bd que no queremos en stand by) nuestro servidor puede recibir varias consultas 
 
